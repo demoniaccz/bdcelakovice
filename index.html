@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BK Čelákovice — Bytový komplex</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+</head>
+<body>
+    <!-- Cursor glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <span class="logo-icon">BK</span>
+                <span class="logo-text">Čelákovice</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#info" class="nav-link">Informace</a></li>
+                <li><a href="#dokumenty" class="nav-link">Dokumenty</a></li>
+                <li><a href="#parkovani" class="nav-link">Parkování</a></li>
+                <li><a href="#vylety" class="nav-link">Výlety</a></li>
+                <li><a href="#penb" class="nav-link">PENB</a></li>
+                <li><a href="#kontakty" class="nav-link">Kontakty</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="hero-gradient"></div>
+            <div class="hero-pattern"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge" data-animate>Bytový komplex Čelákovice</div>
+            <h1 class="hero-title" data-animate>
+                Váš domov.<br>
+                <span class="gradient-text">Vaše komunita.</span>
+            </h1>
+            <p class="hero-subtitle" data-animate>
+                Společný portál pro obyvatele bytového komplexu v Čelákovicích.
+                Najdete zde vše potřebné — od praktických informací po užitečné kontakty.
+            </p>
+            <div class="hero-actions" data-animate>
+                <a href="#info" class="btn btn-primary">
+                    <span>Prozkoumat</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7.8H7.8"/></svg>
+                </a>
+                <a href="#kontakty" class="btn btn-ghost">Kontakty</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <div class="scroll-indicator">
+                <div class="scroll-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <section class="stats-bar">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item" data-animate>
+                    <div class="stat-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Bytových jednotek</span>
+                    </div>
+                </div>
+                <div class="stat-item" data-animate>
+                    <div class="stat-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-number">A–E</span>
+                        <span class="stat-label">Byty</span>
+                    </div>
+                </div>
+                <div class="stat-item" data-animate>
+                    <div class="stat-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Informace online</span>
+                    </div>
+                </div>
+                <div class="stat-item" data-animate>
+                    <div class="stat-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-number">Čelákovice</span>
+                        <span class="stat-label">Středočeský kraj</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Praktické informace -->
+    <section class="section" id="info">
+        <div class="container">
+            <div class="section-header" data-animate>
+                <span class="section-tag">01</span>
+                <h2 class="section-title">Praktické informace</h2>
+                <p class="section-desc">Vše co potřebujete vědět pro bezproblémové bydlení</p>
+            </div>
+
+            <div class="info-grid">
+                <!-- Card: Trvalý pobyt -->
+                <div class="info-card" data-animate>
+                    <div class="card-icon blue">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>
+                    </div>
+                    <h3 class="card-title">Registrace trvalého pobytu</h3>
+                    <p class="card-text">Trvalý pobyt se ohlašuje na matrice městského úřadu v budově, kde sídlí Česká Pošta i Česká spořitelna. Vezměte si s sebou <strong>nájemní smlouvu</strong> a <strong>doklad totožnosti</strong>.</p>
+                </div>
+
+                <!-- Card: Komunální odpad -->
+                <div class="info-card" data-animate>
+                    <div class="card-icon green">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+                    </div>
+                    <h3 class="card-title">Komunální odpad</h3>
+                    <p class="card-text">Poplatky za komunální odpad platí každý s trvalým pobytem v Čelákovicích. <strong>Splatnost do konce března.</strong> Lze zaplatit převodem nebo v hotovosti na městském úřadu.</p>
+                </div>
+
+                <!-- Card: Svoz odpadu -->
+                <div class="info-card" data-animate>
+                    <div class="card-icon amber">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    </div>
+                    <h3 class="card-title">Svozy odpadu 2026</h3>
+                    <p class="card-text">Popelnice na směsný odpad a bioodpad se vyváží každé <strong>druhé pondělí</strong> časně ráno. Bioodpad: květen–listopad. Plasty každé 4 týdny. <em>Do popelnic na plasty lze vhazovat i kovy.</em></p>
+                </div>
+
+                <!-- Card: Bioodpad -->
+                <div class="info-card" data-animate>
+                    <div class="card-icon green">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3 class="card-title">Bioodpad</h3>
+                    <p class="card-text">Rostlinné zbytky, listí, tráva, seno, plevel, větve stromů a keřů, zbytky pečiva, ovoce, zeleniny, čajové sáčky, skořápky z vajec, kávový odpad.</p>
+                </div>
+
+                <!-- Card: Technické zázemí -->
+                <div class="info-card card-wide" data-animate>
+                    <div class="card-icon red">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <h3 class="card-title">Technické zázemí budovy</h3>
+                    <div class="card-grid-inner">
+                        <div class="tech-item">
+                            <span class="tech-icon">💧</span>
+                            <div>
+                                <strong>Hlavní uzávěr vody</strong>
+                                <p>V průjezdu pod ocelovým poklopem</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-icon">🔥</span>
+                            <div>
+                                <strong>Hlavní uzávěr plynu</strong>
+                                <p>V průjezdu vpravo od vchodu</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-icon">⚡</span>
+                            <div>
+                                <strong>Elektro rozvaděč</strong>
+                                <p>Vlevo od vchodu</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-icon">🧯</span>
+                            <div>
+                                <strong>Hasicí přístroj</strong>
+                                <p>V průjezdu vlevo + ve sklepě</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card: Markýzy -->
+                <div class="info-card card-image-bottom" data-animate>
+                    <div class="card-icon purple">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    </div>
+                    <h3 class="card-title">Předokenní markýzy</h3>
+                    <p class="card-text"><strong>Květen–září:</strong> Mějte vytažené předokenní markýzy střešních oken. <strong>Chladnější období:</strong> Nechte markýzy srolované.</p>
+                    <img src="assets/markyza.jpg" alt="Předokenní markýzy" class="card-image-below">
+                </div>
+
+                <!-- Card: Sklep -->
+                <div class="info-card card-image-bottom" data-animate>
+                    <div class="card-icon indigo">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <h3 class="card-title">Vybavení sklepa</h3>
+                    <p class="card-text">K dispozici jsou schůdky, hrábě, lopata a <strong>elektrické sekačky</strong> k zapůjčení. Letní větrání sklepa při teplotě nad +20 °C a vlhkosti pod 60 %.</p>
+                    <img src="assets/sekacka.jpg" alt="Zahradní sekačka" class="card-image-below">
+                </div>
+
+                <!-- Card: Podlaha -->
+                <div class="info-card" data-animate>
+                    <div class="card-icon amber">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h3 class="card-title">Anhydritová podlaha</h3>
+                    <p class="card-text">Anhydritová podlaha je všude tam, kde je povrch s dlažbou. <strong class="text-danger">Nesmí být zbytečně zvlhčena!</strong> Promočený anhydrit se zhroutí a rozpadne.</p>
+                </div>
+
+                <!-- Card: Anténa -->
+                <div class="info-card" data-animate>
+                    <div class="card-icon blue">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+                    </div>
+                    <h3 class="card-title">TV a rádio signál</h3>
+                    <p class="card-text">Televizní a rozhlasový signál je přijímán z vysílače <strong>Buková hora</strong> u Ústí nad Labem.</p>
+                </div>
+            </div>
+
+            <!-- External links -->
+            <div class="links-bar" data-animate>
+                <h3 class="links-title">Užitečné odkazy</h3>
+                <div class="links-grid">
+                    <a href="https://www.celakovice.cz" target="_blank" rel="noopener" class="ext-link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        Městský úřad Čelákovice
+                    </a>
+                    <a href="https://munipolis.cz" target="_blank" rel="noopener" class="ext-link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        MUNIPOLIS Čelákovice
+                    </a>
+                    <a href="https://www.celakovak.cz/" target="_blank" rel="noopener" class="ext-link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        Vodné a stočné
+                    </a>
+                    <a href="https://www.celakovice.cz/cs/mestsky-zpravodaj/" target="_blank" rel="noopener" class="ext-link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        Městský zpravodaj
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Společné dokumenty -->
+    <section class="section section-alt" id="dokumenty">
+        <div class="container">
+            <div class="section-header" data-animate>
+                <span class="section-tag">02</span>
+                <h2 class="section-title">Společné dokumenty</h2>
+                <p class="section-desc">Důležité právní a praktické informace pro nájemníky</p>
+            </div>
+
+            <div class="docs-grid">
+                <div class="doc-card" data-animate>
+                    <div class="doc-number">01</div>
+                    <h3>Běžná údržba a drobné opravy</h3>
+                    <p>Povinnosti nájemců dle <strong>zákona č. 308/2015 Sb.</strong> — pravidla a limity pro drobné opravy a běžnou údržbu související s užíváním bytu.</p>
+                    <a href="https://www.zakonyprolidi.cz/cs/2015-308" target="_blank" rel="noopener" class="doc-link">
+                        Zobrazit zákon
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                    </a>
+                </div>
+
+                <div class="doc-card" data-animate>
+                    <div class="doc-number">02</div>
+                    <h3>Převod plynu a elektřiny</h3>
+                    <p>Při změně nájemce je nutno převést odběrná místa. Končící nájemce vyplní formulář, správce vyfotí měřidla, nový nájemce obdrží podklady.</p>
+                    <div class="doc-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Formuláře</span>
+                            <span class="detail-value">ČEZ — elektřina i plyn</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Kontaktní místa</span>
+                            <span class="detail-value">Brandýs n.L. nebo Praha Invalidovna</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-card" data-animate>
+                    <div class="doc-number">03</div>
+                    <h3>Televizní a rozhlasové poplatky</h3>
+                    <p>Koncesionářské poplatky za Českou televizi a Český rozhlas — povinnosti spojené s vlastnictvím přijímače, podmínky placení a případné zproštění.</p>
+                    <div class="doc-links-row">
+                        <a href="https://www.ceskatelevize.cz/poplatky/" target="_blank" rel="noopener" class="doc-link-sm">Česká televize</a>
+                        <a href="https://www.rozhlas.cz/poplatky/" target="_blank" rel="noopener" class="doc-link-sm">Český rozhlas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parkování -->
+    <section class="section" id="parkovani">
+        <div class="container">
+            <div class="section-header" data-animate>
+                <span class="section-tag">03</span>
+                <h2 class="section-title">Parkování</h2>
+                <p class="section-desc">Pravidla a důležité informace o parkování v areálu</p>
+            </div>
+
+            <div class="parking-rules" data-animate>
+                <div class="rule-item">
+                    <div class="rule-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    </div>
+                    <div>
+                        <h4>Dodatek k nájemní smlouvě</h4>
+                        <p>Parkování se řeší dodatkem k nájemní smlouvě — podmínky jsou sjednány individuálně.</p>
+                    </div>
+                </div>
+                <div class="rule-item">
+                    <div class="rule-icon warning">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <div>
+                        <h4>Těžší vozidla</h4>
+                        <p>Pro vjezd těžšího auta na dvůr jsou v průjezdu (poblíž schránek) připraveny dva černé ocelové pláty pro překrytí odvodňovacího žlábku.</p>
+                    </div>
+                </div>
+                <div class="rule-item">
+                    <div class="rule-icon danger">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    </div>
+                    <div>
+                        <h4>Zajištění vrat</h4>
+                        <p>Obě křídla vrat ve vjezdu je nutno při otevírání <strong>řádně zajistit</strong> — i slabý vánek je dokáže uvést do nežádoucího pohybu!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="parking-image-bottom" data-animate>
+                <img src="assets/parkovani.jpg" alt="Parkování v areálu" class="parking-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Výlety -->
+    <section class="section section-alt" id="vylety">
+        <div class="container">
+            <div class="section-header" data-animate>
+                <span class="section-tag">04</span>
+                <h2 class="section-title">Tipy na výlety</h2>
+                <p class="section-desc">Zajímavosti v okolí Čelákovic — autem, vlakem, na kole i pěšky</p>
+            </div>
+
+            <div class="trips-container">
+                <div class="trips-section" data-animate>
+                    <h3 class="trips-heading">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+                        Blízké okolí
+                    </h3>
+                    <div class="trips-grid">
+                        <div class="trip-chip">Brandýs n.L. + Stará Boleslav + Houšťka</div>
+                        <div class="trip-chip">Mělnické Vtelno + Kadlín + doly</div>
+                        <div class="trip-chip">Mšeno + Vrátenská hora</div>
+                        <div class="trip-chip">Kokořín + Šemánovice</div>
+                        <div class="trip-chip">Mělník a okolí</div>
+                        <div class="trip-chip">Poděbrady</div>
+                        <div class="trip-chip">Radim — zámek</div>
+                        <div class="trip-chip">Romanka — rozhledna</div>
+                        <div class="trip-chip">Dobrovice + Vinařice</div>
+                        <div class="trip-chip">Mladá Boleslav + Putna</div>
+                        <div class="trip-chip">Valečov + Drabské Světničky</div>
+                        <div class="trip-chip">Stránov — zámek</div>
+                        <div class="trip-chip">Kozojedy — kostel</div>
+                        <div class="trip-chip">Klepec — kamenné monumenty</div>
+                        <div class="trip-chip">Cecemín</div>
+                        <div class="trip-chip">Liblice — zámek + zahrada</div>
+                    </div>
+                </div>
+
+                <div class="trips-section" data-animate>
+                    <h3 class="trips-heading">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Vzdálenější cíle
+                    </h3>
+                    <div class="trips-grid">
+                        <div class="trip-chip accent">Hrad Ralsko</div>
+                        <div class="trip-chip accent">Bezděz</div>
+                        <div class="trip-chip accent">Sázava + Český Šternberk</div>
+                        <div class="trip-chip accent">Kozákovský hřbet</div>
+                        <div class="trip-chip accent">Semily — Riegrova stezka</div>
+                    </div>
+                </div>
+
+                <div class="trips-note" data-animate>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                    <span>Tipy na trasy a užitečné informace k výletům — využijte <a href="https://mapy.cz" target="_blank" rel="noopener">mapy.cz</a> pro plánování.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PENB -->
+    <section class="section" id="penb">
+        <div class="container">
+            <div class="section-header" data-animate>
+                <span class="section-tag">05</span>
+                <h2 class="section-title">Energetický průkaz budovy</h2>
+                <p class="section-desc">PENB — Průkaz energetické náročnosti budovy</p>
+            </div>
+
+            <div class="penb-content" data-animate>
+                <div class="penb-card">
+                    <div class="penb-visual">
+                        <div class="energy-scale">
+                            <div class="energy-bar a">A <span>Mimořádně úsporná</span></div>
+                            <div class="energy-bar b">B <span>Velmi úsporná</span></div>
+                            <div class="energy-bar c">C <span>Úsporná</span></div>
+                            <div class="energy-bar d">D <span>Méně úsporná</span></div>
+                            <div class="energy-bar e">E <span>Nehospodárná</span></div>
+                            <div class="energy-bar f">F <span>Velmi nehospodárná</span></div>
+                            <div class="energy-bar g">G <span>Mimořádně nehospodárná</span></div>
+                        </div>
+                    </div>
+                    <div class="penb-info">
+                        <p>Průkaz energetické náročnosti budovy (PENB) je k dispozici obyvatelům komplexu.</p>
+                        <div class="penb-note">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                            <span>Kopii PENB naleznete i v průjezdu na nástěnce nad schránkami.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontakty -->
+    <section class="section section-alt" id="kontakty">
+        <div class="container">
+            <div class="section-header" data-animate>
+                <span class="section-tag">06</span>
+                <h2 class="section-title">Užitečné kontakty</h2>
+                <p class="section-desc">Důležitá čísla a kontakty pro obyvatele komplexu</p>
+            </div>
+
+            <div class="contacts-grid">
+                <!-- Administrativa &amp; správa -->
+                <div class="contact-card featured" data-animate>
+                    <div class="contact-badge">Administrativa &amp; správa</div>
+                    <h3>Ing. Lenka Štemprok</h3>
+                    <p class="contact-role">Smlouvy a platby</p>
+                    <div class="contact-details">
+                        <a href="tel:+420723501906" class="contact-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                            723 501 906
+                        </a>
+                        <a href="mailto:lenka.stemprok@gmail.com" class="contact-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            lenka.stemprok@gmail.com
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Realitní služby -->
+                <div class="contact-card" data-animate>
+                    <div class="contact-badge">Reality</div>
+                    <h3>Michal Kocourek</h3>
+                    <p class="contact-role">Realitní služby</p>
+                    <div class="contact-details">
+                        <a href="tel:+420776300756" class="contact-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                            776 300 756
+                        </a>
+                        <a href="mailto:michal.kocourek@obchodsrealitami.cz" class="contact-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            michal.kocourek@obchodsrealitami.cz
+                        </a>
+                        <a href="https://www.obchodsrealitami.cz" target="_blank" rel="noopener" class="contact-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                            www.obchodsrealitami.cz
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Servis kotlů -->
+                <div class="contact-card" data-animate>
+                    <div class="contact-badge">Servis</div>
+                    <h3>Karel Procházka</h3>
+                    <p class="contact-role">Servis plynových kotlů</p>
+                    <div class="contact-details">
+                        <a href="tel:+420606757600" class="contact-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                            606 757 600
+                        </a>
+                        <a href="https://www.serviskotelen.cz" target="_blank" rel="noopener" class="contact-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                            www.serviskotelen.cz
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Městská policie -->
+                <div class="contact-card" data-animate>
+                    <div class="contact-badge">Město</div>
+                    <h3>Městská policie</h3>
+                    <p class="contact-role">Čelákovice</p>
+                    <div class="contact-details">
+                        <a href="tel:+420326929150" class="contact-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                            326 929 150
+                        </a>
+                        <a href="tel:+420731136156" class="contact-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                            731 136 156
+                        </a>
+                        <a href="mailto:mestska.policie@celakovice.cz" class="contact-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            mestska.policie@celakovice.cz
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Emergency numbers -->
+            <div class="emergency-bar" data-animate>
+                <h3 class="emergency-title">Tísňová volání</h3>
+                <div class="emergency-grid">
+                    <div class="emergency-item">
+                        <span class="emergency-number">112</span>
+                        <span class="emergency-label">Integrovaný záchranný systém</span>
+                    </div>
+                    <div class="emergency-item">
+                        <span class="emergency-number">155</span>
+                        <span class="emergency-label">Záchranná služba</span>
+                    </div>
+                    <div class="emergency-item">
+                        <span class="emergency-number">158</span>
+                        <span class="emergency-label">Policie ČR</span>
+                    </div>
+                    <div class="emergency-item">
+                        <span class="emergency-number">150</span>
+                        <span class="emergency-label">Hasiči</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">BK</span>
+                    <span class="logo-text">Čelákovice</span>
+                </div>
+                <p class="footer-text">Bytový komplex Čelákovice — společný portál pro obyvatele</p>
+                <div class="footer-links">
+                    <a href="https://www.celakovice.cz" target="_blank" rel="noopener">Město Čelákovice</a>
+                    <span class="footer-sep">·</span>
+                    <a href="mailto:lenka.stemprok@gmail.com">Kontakt</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
