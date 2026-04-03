@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.bytovykomplex.cz)",
+      "WebFetch(domain:b.bytovykomplex.cz)",
+      "WebFetch(domain:d.bytovykomplex.cz)",
+      "WebFetch(domain:a.bytovykomplex.cz)",
+      "WebFetch(domain:c.bytovykomplex.cz)",
+      "WebFetch(domain:e.bytovykomplex.cz)",
+      "Bash(curl -k -s -L https://b.bytovykomplex.cz/)",
+      "Bash(curl -k -s -L https://d.bytovykomplex.cz/)",
+      "WebFetch(domain:web.archive.org)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(mkdir -p assets)",
+      "Bash(curl -sL -o assets/markyzy.jpg \"https://lh3.googleusercontent.com/sitesv/APaQ0SSmv1nlxwC0_fXOtPr5mH2UwV_dIInLoaJoTiQ3NQyRGoi-wi5fxZTls1L7kkgeSQjGHsVCVLnqzxih7R6ssY2OamJnecmbVIuhXVn2chAXBjoP2a1O4K7wW1O-hyR0czxy25erVLUGCLZjWtQtF0yr_yf-WiGSStqw1LKR6fWs_KHfZLfYp1RxYxguOZ2C_OypCIvfGyLZXjL-jr7IEHGYC4ADMpavnewTOoU=w1280\")",
+      "Bash(curl -sL -o assets/sekacka.jpg \"https://lh3.googleusercontent.com/sitesv/APaQ0STtBebS-xVi7_MhIz5yRaLeiYJUDgoZN-lYpdiLnPY3Lzv98JTa5JUt8DK3m9G_Fuy_ev7DT_cDkXP_mCqifbv2w_IanGZfPaYgGcMUxLfvV73vAzadq38B86aSajJ7weXY4UN7MReOff4e3DAUBPOxr9r43xunvK5N4F6SR23bUNbAPpZGypkUuTOxWSZD_Y2blbfMfM94N9oWKnn5YEpOR9rAgbZEygxtUcM=w1280\")",
+      "Bash(curl -sL -o assets/parkovani.jpg \"https://lh3.googleusercontent.com/sitesv/APaQ0SSwYyXOLiZSFRdb7FxIVgHeY7rfFBpUZBWtd8_CTMl4iZpN76zQwr4GsG78IYeUpgpqc6nZmUC_3ixJ9IHljiR3T3uWfuQA0n01OkBPbuKwZsVw4t6upYOdTM_NHuuS7oGXr0RRBMrkh6jGX7rdOFTZl9UQC3HaiaVSHzLhUz5G0BBGztmvjad0VwpHeN8YH3jmaPq-WuGSi4UiLIb7XGcgK8be4UHbqQeT3Zs=w1280\")",
+      "Bash(magick identify:*)",
+      "Bash(curl -sL -o markyzy_full.jpg \"https://lh3.googleusercontent.com/sitesv/APaQ0SSmv1nlxwC0_fXOtPr5mH2UwV_dIInLoaJoTiQ3NQyRGoi-wi5fxZTls1L7kkgeSQjGHsVCVLnqzxih7R6ssY2OamJnecmbVIuhXVn2chAXBjoP2a1O4K7wW1O-hyR0czxy25erVLUGCLZjWtQtF0yr_yf-WiGSStqw1LKR6fWs_KHfZLfYp1RxYxguOZ2C_OypCIvfGyLZXjL-jr7IEHGYC4ADMpavnewTOoU=s0\")",
+      "Bash(ls -la D:/MyProjects/bdCelakovice/bdcelakovice/assets/mark*)",
+      "Bash(ls -la D:/MyProjects/bdCelakovice/bdcelakovice/assets/*.jpg)",
+      "Bash(ls -la D:/MyProjects/bdCelakovice/bdcelakovice/assets/*.png)",
+      "Bash(ls -la D:/MyProjects/bdCelakovice/assets/markyzy*)",
+      "Bash(rm -rf .git)",
+      "Bash(mv bdcelakovice/.git .)",
+      "Bash(cp bdcelakovice/CNAME .)",
+      "Bash(cp bdcelakovice/README.md .)",
+      "Bash(rm -rf bdcelakovice)",
+      "Bash(cp -r bdcelakovice/.git .git_new)",
+      "Bash(mv .git_new .git)"
+    ]
+  }
+}

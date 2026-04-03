@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "bk-web",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["http-server", ".", "-p", "$PORT"],
+      "port": 3000,
+      "autoPort": true
+    }
+  ]
+}
