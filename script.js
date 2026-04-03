@@ -3,12 +3,54 @@
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
+    initLogin();
     initNavbar();
     initMobileNav();
     initScrollAnimations();
     initCursorGlow();
     initActiveNavLink();
 });
+
+// ============================================
+// Password gate
+// ============================================
+
+function initLogin() {
+    const overlay = document.getElementById('loginOverlay');
+    const form = document.getElementById('loginForm');
+    const input = document.getElementById('loginPassword');
+    const error = document.getElementById('loginError');
+    const HASH = '13837d79e7fe13b66fd202e1a9892a9c6f1114f1defac9e2358b7cf9952d092f';
+
+    if (localStorage.getItem('bk_auth') === HASH) {
+        overlay.classList.add('hidden');
+        return;
+    }
+
+    document.body.style.overflow = 'hidden';
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const hash = await sha256(input.value);
+        if (hash === HASH) {
+            localStorage.setItem('bk_auth', HASH);
+            overlay.classList.add('hidden');
+            document.body.style.overflow = '';
+        } else {
+            error.classList.add('show');
+            input.value = '';
+            input.focus();
+            setTimeout(() => error.classList.remove('show'), 2000);
+        }
+    });
+}
+
+async function sha256(message) {
+    const msgBuffer = new TextEncoder().encode(message);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
 
 // ============================================
 // Navbar scroll effect
