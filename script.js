@@ -222,20 +222,29 @@ function initNavbar() {
 function initMobileNav() {
     const toggle = document.getElementById('navToggle');
     const links = document.getElementById('navLinks');
+    const navbar = document.getElementById('navbar');
 
-    toggle.addEventListener('click', () => {
-        toggle.classList.toggle('active');
-        links.classList.toggle('open');
-        document.body.style.overflow = links.classList.contains('open') ? 'hidden' : '';
-    });
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-controls', 'navLinks');
+    toggle.setAttribute('aria-label', 'Otevřít menu');
 
-    // Close on link click
+    const setOpen = (open) => {
+        toggle.classList.toggle('active', open);
+        links.classList.toggle('open', open);
+        navbar.classList.toggle('menu-open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Zavřít menu' : 'Otevřít menu');
+        document.body.style.overflow = open ? 'hidden' : '';
+    };
+
+    toggle.addEventListener('click', () => setOpen(!links.classList.contains('open')));
+
+    // Close on link click or Escape
     links.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-            toggle.classList.remove('active');
-            links.classList.remove('open');
-            document.body.style.overflow = '';
-        });
+        link.addEventListener('click', () => setOpen(false));
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && links.classList.contains('open')) setOpen(false);
     });
 }
 

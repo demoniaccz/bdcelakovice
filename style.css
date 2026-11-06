@@ -360,12 +360,27 @@ body:hover .cursor-glow {
         justify-content: center;
         gap: 0.5rem;
         padding: 2rem;
+        height: 100vh;
+        height: 100dvh;
         transform: translateX(100%);
-        transition: transform 0.5s var(--ease);
+        visibility: hidden;
+        transition: transform 0.5s var(--ease), visibility 0s linear 0.5s;
     }
 
     .nav-links.open {
         transform: translateX(0);
+        visibility: visible;
+        transition: transform 0.5s var(--ease);
+    }
+
+    /* backdrop-filter on the scrolled navbar would trap the fixed
+       full-screen menu inside the navbar's own box — drop it while open */
+    .navbar.menu-open,
+    .navbar.menu-open.scrolled {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: transparent;
+        border-bottom-color: transparent;
     }
 
     .nav-link {
