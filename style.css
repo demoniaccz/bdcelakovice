@@ -640,10 +640,34 @@ body:hover .cursor-glow {
    Info Cards
    ============================================ */
 
+/* Flex instead of grid so an incomplete last row is centered at every width */
 .info-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
+    --gap: 1.25rem;
+    --cols: 3;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--gap);
+}
+
+.info-grid > .info-card {
+    /* flex-grow lets a card left alone in the last row stretch to full width */
+    flex: 1 0 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols));
+    min-width: 0;
+}
+
+/* Set by script.js when a card is alone in its row and the grid has 2+ columns */
+.info-card.row-alone {
+    text-align: center;
+}
+
+.info-card.row-alone .card-icon {
+    margin-inline: auto;
+}
+
+.info-card.row-alone .card-text {
+    max-width: 40rem;
+    margin-inline: auto;
 }
 
 .info-card {
@@ -678,8 +702,8 @@ body:hover .cursor-glow {
     opacity: 1;
 }
 
-.card-wide {
-    grid-column: span 2;
+.info-grid > .card-wide {
+    flex-basis: calc(2 * (100% - (var(--cols) - 1) * var(--gap)) / var(--cols) + var(--gap));
 }
 
 .card-icon {
@@ -756,19 +780,16 @@ body:hover .cursor-glow {
 
 @media (max-width: 1024px) {
     .info-grid {
-        grid-template-columns: repeat(2, 1fr);
+        --cols: 2;
     }
-    .card-wide {
-        grid-column: span 2;
+    .info-grid > .card-wide {
+        flex-basis: 100%;
     }
 }
 
 @media (max-width: 640px) {
     .info-grid {
-        grid-template-columns: 1fr;
-    }
-    .card-wide {
-        grid-column: span 1;
+        --cols: 1;
     }
     .card-grid-inner {
         grid-template-columns: 1fr;
@@ -944,6 +965,97 @@ body:hover .cursor-glow {
 
 .parking-image-bottom {
     margin-top: 1.25rem;
+}
+
+/* Image preview (lightbox) */
+.lightbox-trigger {
+    display: block;
+    width: 100%;
+    padding: 0;
+    background: none;
+    border: 0;
+    border-radius: var(--radius-lg);
+    cursor: zoom-in;
+    flex-shrink: 0;
+}
+
+.lightbox-trigger img {
+    transition: opacity 0.2s;
+}
+
+.lightbox-trigger:hover img {
+    opacity: 0.85;
+}
+
+.lightbox-trigger:focus-visible {
+    outline: 2px solid var(--primary-light);
+    outline-offset: 3px;
+}
+
+.lightbox {
+    max-width: none;
+    max-height: none;
+    width: 100vw;
+    height: 100dvh;
+    margin: 0;
+    padding: 1rem;
+    border: 0;
+    background: transparent;
+    display: none;
+    place-items: center;
+    cursor: zoom-out;
+}
+
+.lightbox[open] {
+    display: grid;
+}
+
+.lightbox::backdrop {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+.lightbox-img {
+    width: 100%;
+    height: 100%;
+    max-width: 1600px;
+    object-fit: contain;
+}
+
+.lightbox-close {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    display: grid;
+    place-items: center;
+    background: var(--surface);
+    border: 1px solid var(--border-light);
+    border-radius: 50%;
+    color: var(--text);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.lightbox-close:hover {
+    background: var(--surface-hover);
+}
+
+.lightbox-close:focus-visible {
+    outline: 2px solid var(--primary-light);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .lightbox[open] .lightbox-img {
+        animation: lightbox-in 0.2s var(--ease);
+    }
+}
+
+@keyframes lightbox-in {
+    from { opacity: 0; transform: scale(0.97); }
+    to { opacity: 1; transform: none; }
 }
 
 .parking-img {
@@ -1325,7 +1437,80 @@ body:hover .cursor-glow {
     flex-shrink: 0;
 }
 
+/* Odd last card spans both columns and is centered — desktop only */
+@media (min-width: 769px) {
+    .contacts-grid > .contact-card:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        text-align: center;
+    }
+
+    .contacts-grid > .contact-card:last-child:nth-child(odd) .contact-details {
+        align-items: center;
+    }
+
+    .contacts-grid > .contact-card:last-child:nth-child(odd) .opening-hours {
+        margin-inline: auto;
+        text-align: left;
+    }
+}
+
+/* Copy-to-clipboard buttons next to phones and e-mails */
+.contact-row {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.contact-row .contact-item {
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.copy-btn {
+    flex-shrink: 0;
+    display: inline-grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s, border-color 0.2s;
+}
+
+.copy-btn:hover {
+    background: var(--bg);
+    border-color: var(--border);
+    color: var(--primary-light);
+}
+
+.copy-btn:focus-visible {
+    outline: 2px solid var(--primary-light);
+    outline-offset: 2px;
+}
+
+.copy-btn .icon-check {
+    display: none;
+}
+
+.copy-btn.copied {
+    color: var(--green);
+}
+
+.copy-btn.copied .icon-copy {
+    display: none;
+}
+
+.copy-btn.copied .icon-check {
+    display: block;
+}
+
 .opening-hours {
+    max-width: 22rem;
     display: grid;
     grid-template-columns: 2.5rem 1fr;
     gap: 0.35rem 0.5rem;

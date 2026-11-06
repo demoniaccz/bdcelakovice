@@ -9,7 +9,151 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
     initCursorGlow();
     initActiveNavLink();
+    initCopyButtons();
+    initLightbox();
+    initLoneCards();
 });
+
+// ============================================
+// Center content of a card left alone in its row
+// ============================================
+
+function initLoneCards() {
+    const grid = document.querySelector('.info-grid');
+    if (!grid) return;
+
+    const update = () => {
+        const cols = parseInt(getComputedStyle(grid).getPropertyValue('--cols'), 10) || 1;
+        const cards = [...grid.querySelectorAll(':scope > .info-card')];
+        // offsetTop ignores the entrance-animation transform
+        const rows = new Map();
+        cards.forEach(card => {
+            const top = card.offsetTop;
+            rows.set(top, (rows.get(top) || 0) + 1);
+        });
+        cards.forEach(card => {
+            const alone = cols > 1
+                && rows.get(card.offsetTop) === 1
+                && !card.classList.contains('card-wide');
+            card.classList.toggle('row-alone', alone);
+        });
+    };
+
+    update();
+    new ResizeObserver(update).observe(grid);
+}
+
+// ============================================
+// Image preview (lightbox)
+// ============================================
+
+function initLightbox() {
+    const images = document.querySelectorAll('.card-image-below, .parking-img');
+    if (!images.length) return;
+
+    const dialog = document.createElement('dialog');
+    dialog.className = 'lightbox';
+    dialog.setAttribute('aria-label', 'Náhled obrázku');
+
+    const closeBtn = document.createElement('button');
+    closeBtn.type = 'button';
+    closeBtn.className = 'lightbox-close';
+    closeBtn.setAttribute('aria-label', 'Zavřít náhled');
+    closeBtn.textContent = '×';
+
+    const big = document.createElement('img');
+    big.className = 'lightbox-img';
+
+    dialog.append(closeBtn, big);
+    document.body.appendChild(dialog);
+
+    const close = () => dialog.close();
+    closeBtn.addEventListener('click', close);
+    // Click anywhere (backdrop or image) closes the preview
+    dialog.addEventListener('click', (e) => {
+        if (e.target !== closeBtn) close();
+    });
+    dialog.addEventListener('close', () => {
+        document.body.style.overflow = '';
+    });
+
+    images.forEach(img => {
+        const trigger = document.createElement('button');
+        trigger.type = 'button';
+        trigger.className = 'lightbox-trigger';
+        trigger.setAttribute('aria-label', `Zvětšit obrázek: ${img.alt}`);
+        img.replaceWith(trigger);
+        trigger.appendChild(img);
+
+        trigger.addEventListener('click', () => {
+            big.src = img.currentSrc || img.src;
+            big.alt = img.alt;
+            document.body.style.overflow = 'hidden';
+            dialog.showModal();
+            closeBtn.focus();
+        });
+    });
+}
+
+// ============================================
+// Copy buttons for phone numbers and e-mails
+// ============================================
+
+function initCopyButtons() {
+    const links = document.querySelectorAll(
+        '.contact-details a.contact-item[href^="tel:"], .contact-details a.contact-item[href^="mailto:"]'
+    );
+
+    links.forEach(link => {
+        const value = link.textContent.trim();
+        const kind = link.href.startsWith('tel:') ? 'číslo' : 'e-mail';
+
+        const row = document.createElement('div');
+        row.className = 'contact-row';
+        link.replaceWith(row);
+        row.appendChild(link);
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'copy-btn';
+        btn.title = `Kopírovat ${kind}`;
+        btn.setAttribute('aria-label', `Kopírovat ${kind} ${value}`);
+        btn.innerHTML =
+            '<svg class="icon-copy" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>' +
+            '<svg class="icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>';
+        row.appendChild(btn);
+
+        let timer;
+        btn.addEventListener('click', async () => {
+            const ok = await copyText(value);
+            if (!ok) return;
+            btn.classList.add('copied');
+            btn.title = 'Zkopírováno';
+            clearTimeout(timer);
+            timer = setTimeout(() => {
+                btn.classList.remove('copied');
+                btn.title = `Kopírovat ${kind}`;
+            }, 1500);
+        });
+    });
+}
+
+async function copyText(text) {
+    try {
+        await navigator.clipboard.writeText(text);
+        return true;
+    } catch {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        const ok = document.execCommand('copy');
+        ta.remove();
+        return ok;
+    }
+}
 
 // ============================================
 // Password gate
